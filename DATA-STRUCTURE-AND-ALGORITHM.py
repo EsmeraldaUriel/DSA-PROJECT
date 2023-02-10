@@ -219,33 +219,6 @@ def findEnd(maze, moves):
     return False
 
 
-def solve_maze(maze, start, end):
-    row, col = len(maze), len(maze[0])
-    visited = [[False for j in range(col)] for i in range(row)]
-    path = []
-    directions = ["East", "North", "West", "South"]
-
-    def dfs(row, col, direction):
-        if row == end[0] and col == end[1]:
-            path.append(direction)
-            return True
-        if row < 0 or row >= len(maze) or col < 0 or col >= len(maze[0]):
-            return False
-        if visited[row][col]:
-            return False
-        if maze[row][col] == "#":
-            return False
-        visited[row][col] = True
-        path.append(direction)
-        if dfs(row + 1, col, "South") or dfs(row, col - 1, "West") or dfs(row - 1, col, "North") or dfs(row, col + 1, "East"):
-            return True
-        path.pop()
-        return False
-
-    if dfs(start[0], start[1], ""):
-        return path
-    return None
-
 running = True
 while running:
     for event in pygame.event.get():
