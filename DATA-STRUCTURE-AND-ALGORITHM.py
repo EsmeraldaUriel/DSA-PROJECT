@@ -82,7 +82,6 @@ def createMaze5():
     return maze
 
 
-
 # Convert the maze to a format that Pygame can understand
 def to_pygame(maze):
     pygame_maze = []
