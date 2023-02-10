@@ -210,11 +210,20 @@ def findEnd(maze, moves):
             j += 1
 
     if maze[j][i] == "X":
+        print("-" * 35)
+        print("L - LEFT\n"
+              "R - RIGHT\n"
+              "U - UP\n"
+              "D - DOWN")
+        print("-" * 35)
         print("Found: " + moves)
         for i in moves:
             count += 1
+        print("-" * 50)
         print("The Number of correct path to reach the end is: ", count)
+        print("-" * 50)
         printMaze(maze, moves)
+        print("-" * 45)
         return True
     return False
 
@@ -230,13 +239,16 @@ while running:
     nums = queue.Queue()
     nums.put("")
     add = ""
+    print("-" * 35)
     # user can choose what king of maze
-    print("Please select a maze:")
-    print("1. Maze 1")   # maze 1
-    print("2. Maze 2")   # maze 2
-    print("3. Maze 3")   # maze 3
-    print("4. Maze 4")   # maze 4
-    print("5. Maze 5")   # maze 5
+    print("|\t\t Please select a maze:" + " " * 4 + "|")
+    print("-" * 35)
+    print("|\t 1. Maze 1" + " " * 20 + "|")   # maze 1
+    print("|\t 2. Maze 2" + " " * 20 + "|")   # maze 2
+    print("|\t 3. Maze 3" + " " * 20 + "|")   # maze 3
+    print("|\t 4. Maze 4" + " " * 20 + "|")   # maze 4
+    print("|\t 5. Maze 5" + " " * 20 + "|")   # maze 5
+    print("-" * 35)
     selected_maze = int(input("Enter your choice: "))
     if selected_maze == 1:
         maze = createMaze()
@@ -258,6 +270,7 @@ while running:
             if valid(maze, put):
                 nums.put(put)
     print("Number of steps used to solve the maze:", move_counter)
+    print("-" * 45)
 
     # Convert the maze to a format that Pygame can understand
     pygame_maze = to_pygame(maze)
