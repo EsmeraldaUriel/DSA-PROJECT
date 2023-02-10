@@ -195,6 +195,7 @@ def findEnd(maze, moves):
 
     i = start
     j = 0
+    count = 0
     for move in moves:
         if move == "L":
             i -= 1
@@ -210,9 +211,11 @@ def findEnd(maze, moves):
 
     if maze[j][i] == "X":
         print("Found: " + moves)
+        for i in moves:
+            count += 1
+        print("The Number of correct path to reach the end is: ", count)
         printMaze(maze, moves)
         return True
-
     return False
 
 
