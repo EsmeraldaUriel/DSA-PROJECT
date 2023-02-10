@@ -118,6 +118,7 @@ def findEnd(maze, moves):
 
 # MAIN ALGORITHM
 color = "\033[92m"   # color for the path
+move_counter = 0     # counter of all the moves used in the algorithm
 nums = queue.Queue()
 nums.put("")
 add = ""
@@ -133,8 +134,11 @@ else:
 
 while not findEnd(maze, add):
     add = nums.get()
+    move_counter += 1  # counter all moves used in algorithm
     # print(add)
     for j in ["L", "R", "U", "D"]:
         put = add + j
         if valid(maze, put):
             nums.put(put)
+
+print("Found the end in", move_counter, "moves.")
