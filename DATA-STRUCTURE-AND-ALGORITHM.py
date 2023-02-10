@@ -54,7 +54,7 @@ def printMaze(maze, path=""):
     for j, row in enumerate(maze):
         for i, col in enumerate(row):
             if (j, i) in pos:
-                print("+ ", end="")
+                print(color + "+ " + "\033[0m", end="")   # the color
             else:
                 print(col + " ", end="")
         print()
@@ -117,7 +117,7 @@ def findEnd(maze, moves):
 
 
 # MAIN ALGORITHM
-
+color = "\033[92m"   # color for the path
 nums = queue.Queue()
 nums.put("")
 add = ""
