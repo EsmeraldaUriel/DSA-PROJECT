@@ -40,6 +40,49 @@ def createMaze2():
 
     return maze
 
+
+def createMaze3():
+    maze = []
+    maze.append(["#", "#", "#", "#", "#", "O", "#", "#", "#"])
+    maze.append(["#", " ", " ", " ", " ", " ", " ", "#", "#"])
+    maze.append(["#", " ", "#", "#", " ", "#", "#", " ", "#"])
+    maze.append(["#", " ", "#", " ", " ", " ", "#", " ", "#"])
+    maze.append(["#", " ", "#", " ", "#", " ", "#", " ", "#"])
+    maze.append(["#", " ", "#", " ", "#", " ", "#", " ", "#"])
+    maze.append(["#", " ", "#", " ", "#", "#", "#", " ", "#"])
+    maze.append(["#", " ", " ", " ", " ", " ", " ", " ", "#"])
+    maze.append(["#", "#", "#", "#", "#", "#", "#", "X", "#"])
+
+    return maze
+
+def createMaze4():
+    maze = []
+    maze.append(["#", "#", "#", "#", "#", "O", "#", "#", "#"])
+    maze.append(["#", " ", " ", " ", " ", " ", " ", "#", "#"])
+    maze.append(["#", " ", "#", "#", "#", "#", "#", " ", "#"])
+    maze.append(["#", " ", "#", " ", " ", " ", "#", " ", "#"])
+    maze.append(["#", " ", " ", " ", "#", " ", "#", " ", "#"])
+    maze.append(["#", "#", "#", " ", " ", " ", " ", " ", "#"])
+    maze.append(["#", " ", "#", " ", "#", "#", "#", " ", "#"])
+    maze.append(["#", " ", " ", " ", " ", " ", "#", " ", "#"])
+    maze.append(["#", "#", "#", "#", "#", "#", "#", "X", "#"])
+
+    return maze
+
+def createMaze5():
+    maze = []
+    maze.append(["#", "#", "#", "#", "#", "O", "#"])
+    maze.append(["#", " ", " ", " ", " ", " ", "#"])
+    maze.append(["#", " ", "#", "#", "#", "#", "#"])
+    maze.append(["#", " ", "#", " ", " ", " ", "#"])
+    maze.append(["#", " ", "#", " ", "#", " ", "#"])
+    maze.append(["#", " ", " ", " ", "#", " ", "#"])
+    maze.append(["#", "#", "#", "#", "#", "X", "#"])
+
+    return maze
+
+
+
 # Convert the maze to a format that Pygame can understand
 def to_pygame(maze):
     pygame_maze = []
@@ -183,11 +226,20 @@ add = ""
 print("Please select a maze:")
 print("1. Maze 1")   # maze 1
 print("2. Maze 2")   # maze 2
+print("3. Maze 3")   # maze 3
+print("4. Maze 4")   # maze 4
+print("5. Maze 5")   # maze 5
 selected_maze = int(input("Enter your choice: "))
 if selected_maze == 1:
     maze = createMaze()
-else:
+elif selected_maze == 2:
     maze = createMaze2()
+elif selected_maze == 3:
+    maze = createMaze3()
+elif selected_maze == 4:
+    maze = createMaze4()
+else:
+    maze = createMaze5()
 
 while not findEnd(maze, add):
     add = nums.get()
@@ -198,6 +250,7 @@ while not findEnd(maze, add):
         if valid(maze, put):
             nums.put(put)
 print("Number of steps used to solve the maze:", move_counter)
+
 # Convert the maze to a format that Pygame can understand
 pygame_maze = to_pygame(maze)
 
