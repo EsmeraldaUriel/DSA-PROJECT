@@ -121,7 +121,15 @@ color = "\033[92m"   # color for the path
 nums = queue.Queue()
 nums.put("")
 add = ""
-maze = createMaze()
+# user can choose what king of maze
+print("Please select a maze:")
+print("1. Maze 1")   # maze 1
+print("2. Maze 2")   # maze 2
+selected_maze = int(input("Enter your choice: "))
+if selected_maze == 1:
+    maze = createMaze()
+else:
+    maze = createMaze2()
 
 while not findEnd(maze, add):
     add = nums.get()
