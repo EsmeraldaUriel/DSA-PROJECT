@@ -141,4 +141,4 @@ while not findEnd(maze, add):
         if valid(maze, put):
             nums.put(put)
 
-print("Found the end in", move_counter, "moves.")
+print("Number of steps used to solve the maze:", move_counter)
