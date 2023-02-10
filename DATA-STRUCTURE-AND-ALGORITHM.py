@@ -1,5 +1,17 @@
+import pygame
 import queue
 
+
+# Initialize Pygame
+pygame.init()
+
+# Set up the display
+screen = pygame.display.set_mode((400, 300))
+
+# Define the colors
+white = (255, 255, 255)
+black = (0, 0, 0)
+red = (255, 0, 0)
 
 def createMaze():
     maze = []
@@ -27,6 +39,51 @@ def createMaze2():
     maze.append(["#", "#", "#", "#", "#", "#", "#", "X", "#"])
 
     return maze
+
+# Convert the maze to a format that Pygame can understand
+def to_pygame(maze):
+    pygame_maze = []
+    for row in maze:
+        pygame_row = []
+        for cell in row:
+            if cell == "#":
+                pygame_row.append(black)
+            else:
+                pygame_row.append(white)
+        pygame_maze.append(pygame_row)
+    return pygame_maze
+
+# Draw the maze
+def draw_maze(maze, screen, block_size=20):
+    for y, row in enumerate(maze):
+        for x, cell in enumerate(row):
+            rect = pygame.Rect(x * block_size, y * block_size, block_size, block_size)
+            pygame.draw.rect(screen, cell, rect)
+
+# Main game loop
+def main_loop(screen, maze):
+    clock = pygame.time.Clock()
+    running = True
+
+    while running:
+        # Handle events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        # Clear the screen
+        screen.fill((255, 255, 255))
+
+        # Draw the maze
+        draw_maze(maze, screen)
+
+        # Update the display
+        pygame.display.update()
+
+        # Limit the framerate
+        clock.tick(30)
+
+    pygame.quit()
 
 
 def printMaze(maze, path=""):
@@ -140,5 +197,9 @@ while not findEnd(maze, add):
         put = add + j
         if valid(maze, put):
             nums.put(put)
-
 print("Number of steps used to solve the maze:", move_counter)
+# Convert the maze to a format that Pygame can understand
+pygame_maze = to_pygame(maze)
+
+# Start the main game loop
+main_loop(screen, pygame_maze)
